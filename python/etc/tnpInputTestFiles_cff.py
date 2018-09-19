@@ -61,6 +61,26 @@ filesMiniAOD_23Sep2016 = {
         )
 }
 
+filesMiniAOD_2016 = {
+    'mc' :  cms.untracked.vstring(
+        '/store/mc/RunIISummer16MiniAODv2/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext1-v2/80000/F283191C-11C4-E611-973D-00215E2EB74E.root'
+),
+    
+    'data' : cms.untracked.vstring( 
+        '/store/data/Run2016B/SingleElectron/MINIAOD/03Feb2017_ver1-v1/100000/000E1D21-47ED-E611-85E0-0CC47A4D762A.root'
+        )
+}
+
+filesAOD_2016 = {
+    'mc' :  cms.untracked.vstring(
+        '/store/mc/RunIISummer16DR80Premix/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/AODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext1-v1/80000/FED3B50D-8AB1-E611-B230-FA163E71DC21.root'     
+),
+    
+    'data' : cms.untracked.vstring( 
+     '/store/data/Run2016B/SingleElectron/AOD/23Sep2016-v2/80000/0220DA0C-648C-E611-A9AA-0CC47A78A2F6.root'
+        )
+}
+
 filesAOD_23Sep2016 = {
     'mc' : cms.untracked.vstring(
         '/store/mc/RunIISummer16DR80Premix/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/AODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext1-v1/110000/00389155-1FB1-E611-A88A-001E674FB207.root',

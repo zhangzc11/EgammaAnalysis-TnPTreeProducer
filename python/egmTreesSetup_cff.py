@@ -225,6 +225,8 @@ def setSequences(process, options):
         process.probePhoCutBasedTight100XV2  +
         process.probePhoMVA94Xwp90       +
         process.probePhoMVA94Xwp80       +
+        process.probePhoMVA94XV2wp90       +
+        process.probePhoMVA94XV2wp80       +
         process.probePho                
         )
 
