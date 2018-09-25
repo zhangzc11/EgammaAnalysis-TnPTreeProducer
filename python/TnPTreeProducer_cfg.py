@@ -333,6 +333,9 @@ process.tnpPhoIDs = cms.EDAnalyzer("TagProbeFitTreeProducer",
 
                                          passingMVA94Xwp90 = cms.InputTag("probePhoMVA94Xwp90"),
                                          passingMVA94Xwp80 = cms.InputTag("probePhoMVA94Xwp80"),
+
+                                         passingMVA94XV2wp90 = cms.InputTag("probePhoMVA94XV2wp90"),
+                                         passingMVA94XV2wp80 = cms.InputTag("probePhoMVA94XV2wp80"),
                                         )
                                     )
 

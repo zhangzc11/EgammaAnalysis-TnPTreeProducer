@@ -21,6 +21,7 @@ def setIDs(process, options):
                      'RecoEgamma.PhotonIdentification.Identification.mvaPhotonID_Spring16_nonTrig_V1_cff',
                      'RecoEgamma.PhotonIdentification.Identification.cutBasedPhotonID_Fall17_94X_V1_cff',
                      'RecoEgamma.PhotonIdentification.Identification.mvaPhotonID_Fall17_94X_V1_cff',
+                     'RecoEgamma.PhotonIdentification.Identification.mvaPhotonID_Fall17_94X_V2_cff',
                      'RecoEgamma.PhotonIdentification.Identification.cutBasedPhotonID_Fall17_100X_V2_cff'
                      ]
                  
@@ -77,5 +78,12 @@ def setIDs(process, options):
     process.probePhoMVA94Xwp80 = process.probePhoCutBasedLoose.clone()
     process.probePhoMVA94Xwp90.selection = cms.InputTag("egmPhotonIDs:mvaPhoID-RunIIFall17-v1-wp90")    
     process.probePhoMVA94Xwp80.selection = cms.InputTag("egmPhotonIDs:mvaPhoID-RunIIFall17-v1-wp80")    
+
+
+    process.probePhoMVA94XV2wp90 = process.probePhoCutBasedLoose.clone()
+    process.probePhoMVA94XV2wp80 = process.probePhoCutBasedLoose.clone()
+    process.probePhoMVA94XV2wp90.selection = cms.InputTag("egmPhotonIDs:mvaPhoID-RunIIFall17-v2-wp90")    
+    process.probePhoMVA94XV2wp80.selection = cms.InputTag("egmPhotonIDs:mvaPhoID-RunIIFall17-v2-wp80")    
+
 #    process.probePhoMVA94Xwp90.selection = cms.InputTag("egmPhotonIDs:mvaPhoID-Spring16-nonTrig-V1-wp90")    
 #    process.probePhoMVA94Xwp80.selection = cms.InputTag("egmPhotonIDs:mvaPhoID-Spring16-nonTrig-V1-wp90")    
