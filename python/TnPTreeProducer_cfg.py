@@ -24,7 +24,7 @@ varOptions.register(
     )
 
 varOptions.register(
-    "doPhoID", False,
+    "doPhoID", True,
     VarParsing.multiplicity.singleton,
     VarParsing.varType.bool,
     "Include tree for photon ID SF"
@@ -62,7 +62,8 @@ varOptions.register(
 varOptions.register(
     #"GT","auto",
     #"GT","101X_dataRun2_Prompt_v9",
-    "GT","94X_dataRun2_ReReco_EOY17_v6",
+    #"GT","94X_dataRun2_ReReco_EOY17_v6",
+    "GT","94X_mc2017_realistic_v12",
     VarParsing.multiplicity.singleton,
     VarParsing.varType.string,
     "Global Tag to be used"
@@ -158,7 +159,7 @@ if varOptions.GT != "auto" :
 ###################################################################
 ## Define input files for test local run
 ###################################################################
-from EgammaAnalysis.TnPTreeProducer.etc.tnpInputTestFiles_cff import filesMiniAOD_Preliminary2018 as inputs
+#from EgammaAnalysis.TnPTreeProducer.etc.tnpInputTestFiles_cff import filesMiniAOD_Preliminary2018 as inputs
 #if options['useAOD'] : from EgammaAnalysis.TnPTreeProducer.etc.tnpInputTestFiles_cff import filesAOD_23Sep2016 as inputs #switch to 2017 samples if want to cmsRun on AOD
 #if options['useAOD'] : 
 from EgammaAnalysis.TnPTreeProducer.etc.tnpInputTestFiles_cff import filesAOD_Preliminary2017 as inputs #switch to 2017 samples if want to cmsRun on AOD
