@@ -5,16 +5,16 @@ import sys
 from CRABAPI.RawCommand import crabCommand
 
 # talk to DBS to get list of files in this dataset
-from dbs.apis.dbsClient import DbsApi
-dbs = DbsApi('https://cmsweb.cern.ch/dbs/prod/global/DBSReader')
+#from dbs.apis.dbsClient import DbsApi
+#dbs = DbsApi('https://cmsweb.cern.ch/dbs/prod/global/DBSReader')
 
-dataset = '/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISpring18MiniAOD-100X_upgrade2018_realistic_v10-v2/MINIAODSIM'
-fileDictList=dbs.listFiles(dataset=dataset)
+#dataset = '/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext2-v2/MINIAODSIM'
+#fileDictList=dbs.listFiles(dataset=dataset)
 
-print ("dataset %s has %d files" % (dataset, len(fileDictList)))
+#print ("dataset %s has %d files" % (dataset, len(fileDictList)))
 
 # DBS client returns a list of dictionaries, but we want a list of Logical File Names
-lfnList = [ dic['logical_file_name'] for dic in fileDictList ]
+#lfnList = [ dic['logical_file_name'] for dic in fileDictList ]
 
 # this now standard CRAB configuration
 
@@ -23,19 +23,19 @@ from WMCore.Configuration import Configuration
 config = config()
 
 submitVersion ="2018Data_1"
-doEleTree = 'doEleID=True'
+doEleTree = 'doEleID=False'
 doPhoTree = 'doPhoID=True'
 #doHLTTree = 'doTrigger=False'
 #calibEn   = 'useCalibEn=False'
 
-mainOutputDir = '/store/group/phys_egamma/soffi/TnP/ntuples_06152018/%s' % submitVersion
+mainOutputDir = '/store/group/phys_susy/razor/zhicaiz/TnP/ntuples_GEDOOT_02Apr2019/'
 
 config.General.transferLogs = False
 
 config.JobType.pluginName  = 'Analysis'
 
 # Name of the CMSSW configuration file
-config.JobType.psetName  = '/afs/cern.ch/work/s/soffi/EGM-WORK/CMSSW-1011-2018DataTnP/src/EgammaAnalysis/TnPTreeProducer/python/TnPTreeProducer_cfg.py'
+config.JobType.psetName  = '/afs/cern.ch/work/z/zhicaiz/public/release/TnP/CMSSW_10_2_5/src/EgammaAnalysis/TnPTreeProducer/python/TnPTreeProducer_cfg.py'
 #config.Data.allowNonValidInputDataset = False
 config.JobType.sendExternalFolder     = True
 
@@ -69,15 +69,16 @@ if __name__ == '__main__':
 
     ##### submit MC
 
-#    config.Data.splitting     = 'FileBased'
-#    config.Data.unitsPerJob   = 10
-#    config.Data.inputDataset    = '/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISpring18MiniAOD-100X_upgrade2018_realistic_v10-v2/MINIAODSIM'
+    config.Data.splitting     = 'FileBased'
+    config.Data.unitsPerJob   = 10
+    config.Data.inputDataset    = '/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext2-v2/MINIAODSIM'
 
     config.Data.outLFNDirBase = '%s/%s/' % (mainOutputDir,'mc')
-    config.JobType.pyCfgParams  = ['isMC=True',doEleTree,doPhoTree,'GT=100X_upgrade2018_realistic_v10']
-    config.Data.userInputFiles = lfnList
+    config.JobType.pyCfgParams  = ['isMC=True',doEleTree,doPhoTree,'GT=94X_mcRun2_asymptotic_v3']
+    config.JobType.allowUndistributedCMSSW = True
+    #config.Data.userInputFiles = lfnList
     config.Data.splitting = 'FileBased'
-    config.General.requestName  = 'DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8'
+    config.General.requestName  = 'DYJetsToLL_M-50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8_GEDOOTID'
     config.Data.unitsPerJob = 1
     submit(config)
 
@@ -85,22 +86,30 @@ if __name__ == '__main__':
     ##### now submit DATA
     config.Data.outLFNDirBase = '%s/%s/' % (mainOutputDir,'data')
     config.Data.splitting     = 'LumiBased'
-    config.Data.lumiMask      = '/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions18/13TeV/PromptReco/Cert_314472-317391_13TeV_PromptReco_Collisions18_JSON.txt'
+    config.Data.lumiMask      = '/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions16/13TeV/Final/Cert_271036-284044_13TeV_PromptReco_Collisions16_JSON.txt'
     config.Data.unitsPerJob   = 100
-    config.JobType.pyCfgParams  = ['isMC=False',doEleTree,doPhoTree,'GT=101X_dataRun2_Prompt_v9']
+    config.JobType.pyCfgParams  = ['isMC=False',doEleTree,doPhoTree,'GT=94X_dataRun2_v10']
  
-    config.General.requestName  = 'Prompt2018_RunA_v1'
-    config.Data.inputDataset    = '/EGamma/Run2018A-PromptReco-v1/MINIAOD'
-#    submit(config)    
+    config.General.requestName  = 'Run2016B_ver2_TnP_GEDOOTID'
+    config.Data.inputDataset    = '/SingleElectron/Run2016B-17Jul2018_ver2-v1/MINIAOD'
+    submit(config)    
 
-    config.General.requestName  = 'Prompt2018_RunA_v2'
-    config.Data.inputDataset    = '/EGamma/Run2018A-PromptReco-v2/MINIAOD'
-#    submit(config)    
+    config.General.requestName  = 'Run2016C_TnP_GEDOOTID'
+    config.Data.inputDataset    = '/SingleElectron/Run2016C-17Jul2018-v1/MINIAOD'
+    submit(config)    
+    
+    config.General.requestName  = 'Run2016D_TnP_GEDOOTID'
+    config.Data.inputDataset    = '/SingleElectron/Run2016D-17Jul2018-v1/MINIAOD'
+    submit(config)    
 
-    config.General.requestName  = 'Prompt2018_RunA_v3'
-    config.Data.inputDataset    = '/EGamma/Run2018A-PromptReco-v3/MINIAOD'
-#    submit(config)    
+    config.General.requestName  = 'Run2016E_TnP_GEDOOTID'
+    config.Data.inputDataset    = '/SingleElectron/Run2016E-17Jul2018-v1/MINIAOD'
+    submit(config)    
 
-    config.General.requestName  = 'Prompt2018_RunB_v1'
-    config.Data.inputDataset    = '/EGamma/Run2018B-PromptReco-v1/MINIAOD'
-#    submit(config)    
+    config.General.requestName  = 'Run2016F_TnP_GEDOOTID'
+    config.Data.inputDataset    = '/SingleElectron/Run2016F-17Jul2018-v1/MINIAOD'
+    submit(config)    
+
+    config.General.requestName  = 'Run2016G_TnP_GEDOOTID'
+    config.Data.inputDataset    = '/SingleElectron/Run2016G-17Jul2018-v1/MINIAOD'
+    submit(config)    

@@ -18,11 +18,13 @@ def setIDs(process, options):
         
     # define which IDs we want to produce
     my_id_modules = ['RecoEgamma.PhotonIdentification.Identification.cutBasedPhotonID_Spring16_V2p2_cff'   ,
-                     'RecoEgamma.PhotonIdentification.Identification.mvaPhotonID_Spring16_nonTrig_V1_cff',
-                     'RecoEgamma.PhotonIdentification.Identification.cutBasedPhotonID_Fall17_94X_V1_cff',
-                     'RecoEgamma.PhotonIdentification.Identification.mvaPhotonID_Fall17_94X_V1_cff',
-                     'RecoEgamma.PhotonIdentification.Identification.mvaPhotonID_Fall17_94X_V2_cff',
-                     'RecoEgamma.PhotonIdentification.Identification.cutBasedPhotonID_Fall17_100X_V2_cff'
+                     'RecoEgamma.PhotonIdentification.Identification.cutBasedPhotonID_Spring16_V2p2_delayedphoton_cff',
+                     'RecoEgamma.PhotonIdentification.Identification.cutBasedPhotonID_Spring16_V2p2_delayedphotonOOT_cff',
+                     #'RecoEgamma.PhotonIdentification.Identification.mvaPhotonID_Spring16_nonTrig_V1_cff',
+                     #'RecoEgamma.PhotonIdentification.Identification.cutBasedPhotonID_Fall17_94X_V1_cff',
+                     #'RecoEgamma.PhotonIdentification.Identification.mvaPhotonID_Fall17_94X_V1_cff',
+                     #'RecoEgamma.PhotonIdentification.Identification.mvaPhotonID_Fall17_94X_V2_cff',
+                     #'RecoEgamma.PhotonIdentification.Identification.cutBasedPhotonID_Fall17_100X_V2_cff'
                      ]
                  
     for idmod in my_id_modules:
@@ -49,10 +51,23 @@ def setIDs(process, options):
     process.probePhoCutBasedLoose80X  = process.probePhoCutBasedLoose.clone()
     process.probePhoCutBasedMedium80X = process.probePhoCutBasedLoose.clone()
     process.probePhoCutBasedTight80X  = process.probePhoCutBasedLoose.clone()
+    process.probePhoCutBasedLooseDelayedPhotonGED  = process.probePhoCutBasedLoose.clone()
+    process.probePhoCutBasedMediumDelayedPhotonGED = process.probePhoCutBasedLoose.clone()
+    process.probePhoCutBasedTightDelayedPhotonGED  = process.probePhoCutBasedLoose.clone()
+    process.probePhoCutBasedLooseDelayedPhotonOOT  = process.probePhoCutBasedLoose.clone()
+    process.probePhoCutBasedMediumDelayedPhotonOOT = process.probePhoCutBasedLoose.clone()
+    process.probePhoCutBasedTightDelayedPhotonOOT  = process.probePhoCutBasedLoose.clone()
     process.probePhoCutBasedLoose80X.selection  = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Spring16-V2p2-loose"  )
     process.probePhoCutBasedMedium80X.selection = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Spring16-V2p2-medium" )
     process.probePhoCutBasedTight80X.selection  = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Spring16-V2p2-tight"  )
+    process.probePhoCutBasedLooseDelayedPhotonGED.selection  = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Spring16-V2p2-delayedphoton-loose"  )
+    process.probePhoCutBasedMediumDelayedPhotonGED.selection = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Spring16-V2p2-delayedphoton-medium" )
+    process.probePhoCutBasedTightDelayedPhotonGED.selection  = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Spring16-V2p2-delayedphoton-tight"  )
+    process.probePhoCutBasedLooseDelayedPhotonOOT.selection  = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Spring16-V2p2-delayedphotonOOT-loose"  )
+    process.probePhoCutBasedMediumDelayedPhotonOOT.selection = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Spring16-V2p2-delayedphotonOOT-medium" )
+    process.probePhoCutBasedTightDelayedPhotonOOT.selection  = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Spring16-V2p2-delayedphotonOOT-tight"  )
 
+'''
     process.probePhoCutBasedLoose94X  = process.probePhoCutBasedLoose.clone()
     process.probePhoCutBasedMedium94X = process.probePhoCutBasedLoose.clone()
     process.probePhoCutBasedTight94X  = process.probePhoCutBasedLoose.clone()
@@ -83,5 +98,6 @@ def setIDs(process, options):
     process.probePhoMVA94XV2wp80 = process.probePhoCutBasedLoose.clone()
     process.probePhoMVA94XV2wp90.selection = cms.InputTag("egmPhotonIDs:mvaPhoID-RunIIFall17-v2-wp90")    
     process.probePhoMVA94XV2wp80.selection = cms.InputTag("egmPhotonIDs:mvaPhoID-RunIIFall17-v2-wp80")    
+'''
 #    process.probePhoMVA94Xwp90.selection = cms.InputTag("egmPhotonIDs:mvaPhoID-Spring16-nonTrig-V1-wp90")    
 #    process.probePhoMVA94Xwp80.selection = cms.InputTag("egmPhotonIDs:mvaPhoID-Spring16-nonTrig-V1-wp90")    

@@ -17,7 +17,7 @@ varOptions.register(
     )
 
 varOptions.register(
-    "doEleID", True,
+    "doEleID", False,
     VarParsing.multiplicity.singleton,
     VarParsing.varType.bool,
     "Include tree for photon ID SF"
@@ -205,7 +205,8 @@ process.MessageLogger.cerr.threshold = ''
 process.MessageLogger.cerr.FwkReport.reportEvery = 1000
 
 process.source = cms.Source("PoolSource",
-                            fileNames = options['INPUT_FILE_NAME'],
+                            #fileNames = options['INPUT_FILE_NAME'],
+			    fileNames = cms.untracked.vstring('/store/data/Run2016D/SingleElectron/MINIAOD/17Jul2018-v1/20000/30268021-AC8A-E811-874A-3417EBE2EC95.root')
                             )
 process.maxEvents = cms.untracked.PSet( input = options['MAXEVENTS'])
 #process.maxEvents = cms.untracked.PSet(
@@ -325,22 +326,32 @@ process.tnpPhoIDs = cms.EDAnalyzer("TagProbeFitTreeProducer",
                                          passingLoose80X   = cms.InputTag("probePhoCutBasedLoose80X"),
                                          passingMedium80X  = cms.InputTag("probePhoCutBasedMedium80X"),
                                          passingTight80X   = cms.InputTag("probePhoCutBasedTight80X"),
-                                         passingMVA80Xwp90 = cms.InputTag("probePhoMVA80Xwp90"),
-                                         passingMVA80Xwp80 = cms.InputTag("probePhoMVA80Xwp80"),
                                          
-                                         passingLoose94X   = cms.InputTag("probePhoCutBasedLoose94X"),
-                                         passingMedium94X  = cms.InputTag("probePhoCutBasedMedium94X"),
-                                         passingTight94X   = cms.InputTag("probePhoCutBasedTight94X"),
+					 passingLooseDelayedPhotonGED   = cms.InputTag("probePhoCutBasedLooseDelayedPhotonGED"),
+                                         passingMediumDelayedPhotonGED  = cms.InputTag("probePhoCutBasedMediumDelayedPhotonGED"),
+                                         passingTightDelayedPhotonGED   = cms.InputTag("probePhoCutBasedTightDelayedPhotonGED"),
 
-                                         passingLoose100XV2   = cms.InputTag("probePhoCutBasedLoose100XV2"),
-                                         passingMedium100XV2  = cms.InputTag("probePhoCutBasedMedium100XV2"),
-                                         passingTight100XV2   = cms.InputTag("probePhoCutBasedTight100XV2"),
+					 passingLooseDelayedPhotonOOT   = cms.InputTag("probePhoCutBasedLooseDelayedPhotonOOT"),
+                                         passingMediumDelayedPhotonOOT  = cms.InputTag("probePhoCutBasedMediumDelayedPhotonOOT"),
+                                         passingTightDelayedPhotonOOT   = cms.InputTag("probePhoCutBasedTightDelayedPhotonOOT"),
 
-                                         passingMVA94Xwp90 = cms.InputTag("probePhoMVA94Xwp90"),
-                                         passingMVA94Xwp80 = cms.InputTag("probePhoMVA94Xwp80"),
+                                         #passingMVA80Xwp90 = cms.InputTag("probePhoMVA80Xwp90"),
+                                         #passingMVA80Xwp80 = cms.InputTag("probePhoMVA80Xwp80"),
+                                  
+                                         #passingLoose94X   = cms.InputTag("probePhoCutBasedLoose94X"),
+                                         #passingMedium94X  = cms.InputTag("probePhoCutBasedMedium94X"),
+                                         #passingTight94X   = cms.InputTag("probePhoCutBasedTight94X"),
 
-                                         passingMVA94XV2wp90 = cms.InputTag("probePhoMVA94XV2wp90"),
-                                         passingMVA94XV2wp80 = cms.InputTag("probePhoMVA94XV2wp80"),
+                                         #passingLoose100XV2   = cms.InputTag("probePhoCutBasedLoose100XV2"),
+                                         #passingMedium100XV2  = cms.InputTag("probePhoCutBasedMedium100XV2"),
+                                         #passingTight100XV2   = cms.InputTag("probePhoCutBasedTight100XV2"),
+
+                                         #passingMVA94Xwp90 = cms.InputTag("probePhoMVA94Xwp90"),
+                                         #passingMVA94Xwp80 = cms.InputTag("probePhoMVA94Xwp80"),
+
+                                         #passingMVA94XV2wp90 = cms.InputTag("probePhoMVA94XV2wp90"),
+                                         #passingMVA94XV2wp80 = cms.InputTag("probePhoMVA94XV2wp80"),
+
                                         )
                                     )
 

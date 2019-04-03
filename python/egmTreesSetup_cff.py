@@ -215,18 +215,24 @@ def setSequences(process, options):
         process.probePhoCutBasedLoose80X  +
         process.probePhoCutBasedMedium80X +
         process.probePhoCutBasedTight80X  +
-        process.probePhoMVA80Xwp90       +
-        process.probePhoMVA80Xwp80       +
-        process.probePhoCutBasedLoose94X  +
-        process.probePhoCutBasedMedium94X +
-        process.probePhoCutBasedTight94X  +
-        process.probePhoCutBasedLoose100XV2  +
-        process.probePhoCutBasedMedium100XV2 +
-        process.probePhoCutBasedTight100XV2  +
-        process.probePhoMVA94Xwp90       +
-        process.probePhoMVA94Xwp80       +
-        process.probePhoMVA94XV2wp90       +
-        process.probePhoMVA94XV2wp80       +
+        process.probePhoCutBasedLooseDelayedPhotonGED  +
+        process.probePhoCutBasedMediumDelayedPhotonGED +
+        process.probePhoCutBasedTightDelayedPhotonGED  +
+        process.probePhoCutBasedLooseDelayedPhotonOOT  +
+        process.probePhoCutBasedMediumDelayedPhotonOOT +
+        process.probePhoCutBasedTightDelayedPhotonOOT  +
+        #process.probePhoMVA80Xwp90       +
+        #process.probePhoMVA80Xwp80       +
+        #process.probePhoCutBasedLoose94X  +
+        #process.probePhoCutBasedMedium94X +
+        #process.probePhoCutBasedTight94X  +
+        #process.probePhoCutBasedLoose100XV2  +
+        #process.probePhoCutBasedMedium100XV2 +
+        #process.probePhoCutBasedTight100XV2  +
+        #process.probePhoMVA94Xwp90       +
+        #process.probePhoMVA94Xwp80       +
+        #process.probePhoMVA94XV2wp90       +
+        #process.probePhoMVA94XV2wp80       +
         process.probePho                
         )
 
