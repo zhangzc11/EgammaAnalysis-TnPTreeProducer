@@ -69,6 +69,19 @@ if __name__ == '__main__':
 
     ##### submit MC
 
+    config.JobType.allowUndistributedCMSSW = True
+    config.Data.outLFNDirBase = '%s/%s/' % (mainOutputDir,'data')
+    config.Data.splitting     = 'LumiBased'
+    config.Data.lumiMask      = '/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions16/13TeV/Final/Cert_271036-284044_13TeV_PromptReco_Collisions16_JSON.txt'
+    config.Data.unitsPerJob   = 100
+    config.JobType.pyCfgParams  = ['isMC=False',doEleTree,doPhoTree,'GT=94X_dataRun2_v10']
+ 
+    config.General.requestName  = 'Run2016H_TnP_GEDOOTID'
+    config.Data.inputDataset    = '/SingleElectron/Run2016H-17Jul2018-v1/MINIAOD'
+    submit(config)    
+
+
+'''
     config.Data.splitting     = 'FileBased'
     config.Data.unitsPerJob   = 10
     config.Data.inputDataset    = '/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext2-v2/MINIAODSIM'
@@ -113,3 +126,4 @@ if __name__ == '__main__':
     config.General.requestName  = 'Run2016G_TnP_GEDOOTID'
     config.Data.inputDataset    = '/SingleElectron/Run2016G-17Jul2018-v1/MINIAOD'
     submit(config)    
+'''
